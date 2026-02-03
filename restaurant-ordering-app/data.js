@@ -1,23 +1,23 @@
 export const menuArray = [
     {
-        name: "Pizza",
-        ingredients: ["pepperoni", "mushrom", "mozarella"],
+        name: "Sharingan Pepperoni Pizza",
+        ingredients: ["pepperoni", "mozzarella", "tomato sauce", "narutomaki", "oregano"],
         id: 0,
         price: 14,
-        emoji: "🍕"
+        image: "images/naruto-pizza.png"
     },
     {
-        name: "Hamburger",
-        ingredients: ["beef", "cheese", "lettuce"],
+        name: "Kunai Classic Burger",
+        ingredients: ["beef patty", "cheddar cheese", "lettuce", "tomato", "ninja sauce"],
         price: 12,
-        emoji: "🍔",
+        image: "images/naruto-burger.png",
         id: 1
     },
         {
-        name: "Beer",
-        ingredients: ["grain, hops, yeast, water"],
+        name: "Ichiraku Signature Ramen",
+        ingredients: ["tonkotsu broth", "ramen noodles", "chashu pork", "soft-boiled egg", "narutomaki", "green onion"],
         price: 12,
-        emoji: "🍺",
+        image: "images/naruto-ramen.png",
         id: 2
     }
 ]
