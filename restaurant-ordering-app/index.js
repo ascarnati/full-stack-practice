@@ -25,8 +25,19 @@ function getMenuHtml(){
     return menuHtml
 }
 
+// Function to handle adding items to order - incomplete
+function addItem(){
+    addBtn = document.getElementsByClassName('menu-item-btn')
+    addBtn.addEvent
+    if (addBtn) {
+        console.log('Item Added')
+        orderSection = document.getElementById('order-section').classList.remove('hidden')
+    }
+}
+
 function render(){
     menuItemsEl.innerHTML = getMenuHtml()
 }
 
 render()
+addItem()
