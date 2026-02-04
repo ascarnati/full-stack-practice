@@ -1,6 +1,18 @@
-import { menuArray } from './data.js'
-const menuItemsEl = document.getElementById('menu-container')
 
+console.log('JS file is running')
+
+// Imports
+import { menuArray } from './data.js'
+
+// DOM Elements
+const menuItemsEl = document.getElementById('menu-container')
+const orderSection = document.getElementById('order-section')
+const orderItemsContainer = document.getElementById('order-items-container')
+
+// State Variables
+let order = []
+
+// Function to generate menu HTML
 function getMenuHtml(){
     
     let menuHtml = ''
@@ -25,19 +37,29 @@ function getMenuHtml(){
     return menuHtml
 }
 
-// Function to handle adding items to order - incomplete
-function addItem(){
-    addBtn = document.getElementsByClassName('menu-item-btn')
-    addBtn.addEvent
-    if (addBtn) {
-        console.log('Item Added')
-        orderSection = document.getElementById('order-section').classList.remove('hidden')
-    }
+// Function to handle menu clicks
+function handleMenuClick(e) {
+    if (!e.target.dataset.add) return
+
+    orderSection.classList.remove('hidden')
+    orderItemsContainer.innerHTML = `<p>Item added to order!</p>`
+    console.log('Clicked element:', e.target.dataset.add)
 }
 
+function addItemToOrder(itemId) {
+    const menuItem = order.findIndex(function(item){
+        return item.id === itemId
+    })
+    console.log(order)
+}
+
+// Initial render
 function render(){
     menuItemsEl.innerHTML = getMenuHtml()
 }
 
-render()
-addItem()
+// Event Listeners
+menuItemsEl.addEventListener('click', handleMenuClick)
+
+// Call initial render
+render(console.log("App is running"))
