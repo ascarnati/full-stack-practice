@@ -41,25 +41,47 @@ function getMenuHtml(){
 function handleMenuClick(e) {
     if (!e.target.dataset.add) return
 
-    orderSection.classList.remove('hidden')
-    orderItemsContainer.innerHTML = `<p>Item added to order!</p>`
-    console.log('Clicked element:', e.target.dataset.add)
-}
+    const itemId = Number(e.target.dataset.add)
 
-function addItemToOrder(itemId) {
-    const menuItem = order.findIndex(function(item){
+    const clickedItem = menuArray.find(function(item){
         return item.id === itemId
     })
-    console.log(order)
+
+    order.push(clickedItem)
+
+    orderSection.classList.remove('hidden')
+    renderOrder()
+
+    console.log(clickedItem)
+}
+
+// TODO:
+// function addItemToOrder(itemId) {
+//     const menuItem = order.findIndex(function(item){
+//         return item.id === itemId
+//     })
+//     console.log(order)
+// }
+
+// Renders order items
+function renderOrder() {
+    let orderHtml = ''
+
+    order.forEach(function(orderItem) {
+        orderHtml += `${orderItem.name}<br>`
+
+    })
+    orderItemsContainer.innerHTML = orderHtml
 }
 
 // Initial render
 function render(){
     menuItemsEl.innerHTML = getMenuHtml()
+    // console.log("App is running")
 }
 
 // Event Listeners
 menuItemsEl.addEventListener('click', handleMenuClick)
 
 // Call initial render
-render(console.log("App is running"))
+render()
