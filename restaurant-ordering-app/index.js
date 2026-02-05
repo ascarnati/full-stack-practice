@@ -40,20 +40,34 @@ function getMenuHtml(){
 // Function to handle menu clicks
 function handleMenuClick(e) {
     if (!e.target.dataset.add) return
+    console.log('add clicked:', e.target.dataset.add)
 
     const itemId = Number(e.target.dataset.add)
 
     const clickedItem = menuArray.find(function(item){
         return item.id === itemId
     })
+    console.log('clicked item:', clickedItem)
 
-    order.push(clickedItem)
+    const existingIndex = order.findIndex(function(orderItem){
+        return orderItem.item.id === itemId
+    })
+
+    if (existingIndex !== -1) {
+        order[existingIndex].qty += 1
+        renderOrder()
+    } else {
+        order.push({item: clickedItem, qty: 1})
+    }
 
     orderSection.classList.remove('hidden')
     renderOrder()
 
-    console.log(clickedItem)
+    console.log('Order:', order)
+
 }
+
+    // order.push(clickedItem)
 
 // TODO:
 // function addItemToOrder(itemId) {
