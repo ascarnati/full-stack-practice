@@ -82,7 +82,12 @@ function renderOrder() {
     let orderHtml = ''
 
     order.forEach(function(orderItem) {
-        orderHtml += `${orderItem.name}<br>`
+        orderHtml += 
+        `<div class="order-item">
+            <span class="order-item-name">${orderItem.item.name}</span>
+            <span class="order-item-qty">x${orderItem.qty}</span>
+            <button class="remove-item-btn" data-remove="${orderItem.item.id}">-</button>
+        </div>`
 
     })
     orderItemsContainer.innerHTML = orderHtml
