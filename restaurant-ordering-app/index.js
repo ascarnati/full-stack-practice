@@ -79,8 +79,6 @@ function handleOrderClick(e) {
 
     if (itemIndex === -1) return
 
-    order[itemIndex].qty -= 1
-
     if (order[itemIndex].qty > 1) {
         order[itemIndex].qty -= 1
     } else {
