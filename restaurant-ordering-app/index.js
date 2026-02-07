@@ -67,15 +67,31 @@ function handleMenuClick(e) {
 
 }
 
-    // order.push(clickedItem)
+// Function to handle order removal
+function handleOrderClick(e) {
+    if (!e.target.dataset.remove) return
 
-// TODO:
-// function addItemToOrder(itemId) {
-//     const menuItem = order.findIndex(function(item){
-//         return item.id === itemId
-//     })
-//     console.log(order)
-// }
+    const itemId = Number(e.target.dataset.remove)
+
+    const itemIndex = order.findIndex(function(orderItem){
+        return orderItem.item.id === itemId
+    })
+
+    if (itemIndex === -1) return
+
+    order[itemIndex].qty -= 1
+
+    if (order[itemIndex].qty > 1) {
+        order[itemIndex].qty -= 1
+    } else {
+        order.splice(itemIndex, 1)
+    }
+
+    renderOrder()
+    console.log('order after removal:', order)
+
+}
+
 
 // Renders order items
 function renderOrder() {
@@ -101,6 +117,7 @@ function render(){
 
 // Event Listeners
 menuItemsEl.addEventListener('click', handleMenuClick)
+orderItemsContainer.addEventListener('click', handleOrderClick)
 
 // Call initial render
 render()
