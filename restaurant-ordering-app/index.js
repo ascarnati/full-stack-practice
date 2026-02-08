@@ -70,6 +70,8 @@ function handleMenuClick(e) {
     }
 
     orderSection.classList.remove('hidden')
+    checkoutBtn.disabled = false
+
     renderOrder()
 
     console.log('Order:', order)
@@ -105,6 +107,7 @@ function renderOrder() {
     if (order.length === 0) {
         orderSection.classList.add('hidden')
         orderItemsContainer.innerHTML = ''
+        checkoutBtn.disable = true
         return
     }
 

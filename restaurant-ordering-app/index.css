@@ -91,3 +91,8 @@ body {
 .hidden {
     display: none;
 }
+
+#checkout-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
