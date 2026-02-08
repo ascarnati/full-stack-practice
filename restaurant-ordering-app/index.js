@@ -95,6 +95,14 @@ function handleOrderClick(e) {
 
 // Renders order items
 function renderOrder() {
+    if (order.length === 0) {
+        orderSection.classList.add('hidden')
+        orderItemsContainer.innerHTML = ''
+        return
+    }
+
+    orderSection.classList.remove('hidden')
+
     let orderHtml = ''
 
     order.forEach(function(orderItem) {
@@ -111,7 +119,7 @@ function renderOrder() {
         totalPrice += orderItem.item.price * orderItem.qty
     })
     orderItemsContainer.innerHTML = orderHtml
-    
+
     orderTotalEl.textContent = `Total: $${totalPrice.toFixed(2)}`
 }
 
