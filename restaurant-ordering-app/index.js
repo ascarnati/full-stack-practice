@@ -39,6 +39,13 @@ function getMenuHtml(){
     return menuHtml
 }
 
+// Function to handle checkout click
+function handleCheckoutClick() {
+    console.log('Checkout clicked')
+    order = []
+    renderOrder()
+}
+
 // Function to handle menu clicks
 function handleMenuClick(e) {
     if (!e.target.dataset.add) return
@@ -132,6 +139,7 @@ function render(){
 // Event Listeners
 menuItemsEl.addEventListener('click', handleMenuClick)
 orderItemsContainer.addEventListener('click', handleOrderClick)
+checkoutBtn.addEventListener('click', handleCheckoutClick)
 
 // Call initial render
 render()
