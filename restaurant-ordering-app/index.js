@@ -8,6 +8,8 @@ import { menuArray } from './data.js'
 const menuItemsEl = document.getElementById('menu-container')
 const orderSection = document.getElementById('order-section')
 const orderItemsContainer = document.getElementById('order-items-container')
+const orderTotalEl = document.getElementById('order-total')
+const checkoutBtn = document.getElementById('complete-order-btn')
 
 // State Variables
 let order = []
@@ -102,9 +104,15 @@ function renderOrder() {
             <span class="order-item-qty">x${orderItem.qty}</span>
             <button class="remove-item-btn" data-remove="${orderItem.item.id}">-</button>
         </div>`
+    })
+    let totalPrice = 0
 
+    order.forEach(function(orderItem){
+        totalPrice += orderItem.item.price * orderItem.qty
     })
     orderItemsContainer.innerHTML = orderHtml
+    
+    orderTotalEl.textContent = `Total: $${totalPrice.toFixed(2)}`
 }
 
 // Initial render
